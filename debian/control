@@ -1,32 +1,32 @@
 Source: qt6-svg
 Section: libs
-Priority: optional
 Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
-Uploaders: Patrick Franz <deltaone@debian.org>, Lu YaNing <dluyaning@gmail.com>,
-Build-Depends: cmake (>= 3.24~),
-               debhelper-compat (= 13),
+Uploaders: Patrick Franz <deltaone@debian.org>,
+Build-Depends: debhelper-compat (= 13),
+               dh-sequence-pkgkde-symbolshelper,
+               cmake (>= 3.24~),
                libgl-dev,
                libvulkan-dev [linux-any],
                ninja-build,
-               pkgconf,
                pkg-kde-tools,
-               qt6-base-dev (>= 6.8.0+dfsg~),
-               qt6-base-private-dev (>= 6.8.0+dfsg~),
+               pkgconf,
+               qt6-base-dev (>= 6.11.2+dfsg~),
+               qt6-base-private-dev (>= 6.11.2+dfsg~),
                zlib1g-dev,
-Build-Depends-Indep: qt6-base-dev (>= 6.8~) <!nodoc>,
-                     qt6-documentation-tools (>= 6.8) <!nodoc>,
-Standards-Version: 4.7.0
+Build-Depends-Indep: qt6-base-dev (>= 6.11~) <!nodoc>,
+                     qt6-documentation-tools (>= 6.11~) <!nodoc>,
+Standards-Version: 4.7.4
 Homepage: https://www.qt.io/developers/
 Vcs-Browser: https://salsa.debian.org/qt-kde-team/qt6/qt6-svg
 Vcs-Git: https://salsa.debian.org/qt-kde-team/qt6/qt6-svg.git
-Rules-Requires-Root: no
 
 Package: libqt6svg6
-Provides: qt6-svg-private-abi (= 6.8.0),
+Provides: qt6-svg-private-abi (= 6.12.0)
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends},
-Depends: ${misc:Depends}, ${shlibs:Depends},
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
 Description: Qt 6 SVG library
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -41,7 +41,8 @@ Description: Qt 6 SVG library
 Package: libqt6svgwidgets6
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends},
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
 Description: Qt 6 SVG Widgets library
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -53,16 +54,32 @@ Description: Qt 6 SVG Widgets library
  .
  This package contains Qt 6 SVG Widgets library.
 
+Package: qt6-svg-plugins
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Breaks: libqt6svg6 (<< 6.7.2-5~)
+Replaces: libqt6svg6 (<< 6.7.2-5~)
+Description: Qt 6 SVG library plugins
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ The QtSvg module provides classes for displaying the contents of SVG files.
+ .
+ Scalable Vector Graphics (SVG) is a language for describing two-dimensional
+ graphics and graphical applications in XML.
+ .
+ This package contains Qt 6 SVG library plugins.
+
 Package: qt6-svg-dev
-Provides: libqt6svg6-dev (= ${binary:Version}),
+Provides: libqt6svg6-dev (= ${binary:Version})
 Architecture: any
 Multi-Arch: same
 Section: libdevel
 Depends: libqt6svg6 (= ${binary:Version}),
          libqt6svgwidgets6 (= ${binary:Version}),
          ${misc:Depends},
-Breaks: libqt6svg6-dev (<< 6.4.1~),
-Replaces: libqt6svg6-dev (<< 6.4.1~),
 Description: Qt 6 SVG - development files
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -95,36 +112,54 @@ Description: Qt 6 SVG - private development files
  .
  Use at your own risk.
 
+Package: qt6-svg-examples
+Architecture: any
+Multi-Arch: same
+Section: misc
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Description: Qt 6 SVG examples
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the examples for the Qt 6 SVG submodule.
+
 Package: qt6-svg-doc
+Build-Profiles: <!nodoc>
 Architecture: all
 Section: doc
-Depends: qt6-base-doc, ${misc:Depends},
+Depends: qt6-base-doc,
+         ${misc:Depends},
 Multi-Arch: foreign
 Description: Qt 6 SVG documentation
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
  .
- This package contains the documentation for the Qt 6 SVG.
+ This package contains the documentation for the Qt 6 SVG submodule.
 
 Package: qt6-svg-doc-html
+Build-Profiles: <!nodoc>
 Architecture: all
 Section: doc
-Depends: qt6-base-doc-html, ${misc:Depends},
+Depends: qt6-base-doc-html,
+         ${misc:Depends},
 Multi-Arch: foreign
 Description: Qt 6 SVG HTML documentation
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
  .
- This package contains the HTML documentation for the Qt 6 SVG.
+ This package contains the HTML documentation for the Qt 6 SVG submodule.
 
 Package: qt6-svg-doc-dev
+Build-Profiles: <!nodoc>
 Architecture: all
 Section: libdevel
-Depends: qt6-base-doc-dev, ${misc:Depends},
+Depends: qt6-base-doc-dev,
+         ${misc:Depends},
 Multi-Arch: foreign
 Description: Qt 6 svg tags files
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
  .
- This package contains the doxygen tags files for the qt SVG
+ This package contains the doxygen tags files for the Qt 6 SVG
  documentation.

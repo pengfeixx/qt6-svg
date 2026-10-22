@@ -1,11 +1,13 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
+
 
 #include "qsvgrenderer.h"
 
 #ifndef QT_NO_SVGRENDERER
 
-#include "qsvgtinydocument_p.h"
+#include "qsvgdocument_p.h"
 
 #include "qbytearray.h"
 #include "qtimer.h"
@@ -71,15 +73,10 @@ class QSvgRendererPrivate : public QObjectPrivate
 public:
     explicit QSvgRendererPrivate()
         : QObjectPrivate(),
-          render(0), timer(0),
+          timer(0),
           fps(30)
     {
         options = defaultOptions();
-    }
-
-    ~QSvgRendererPrivate()
-    {
-        delete render;
     }
 
     void startOrStopTimer()
@@ -111,7 +108,7 @@ public:
         return envOk ? envOpts : appDefaultOptions;
     }
 
-    QSvgTinyDocument *render;
+    std::unique_ptr<QSvgDocument> render;
     QTimer *timer;
     int fps;
     QtSvg::Options options;
@@ -175,7 +172,7 @@ QSvgRenderer::~QSvgRenderer()
 bool QSvgRenderer::isValid() const
 {
     Q_D(const QSvgRenderer);
-    return d->render;
+    return bool(d->render);
 }
 
 /*!
@@ -236,7 +233,7 @@ bool QSvgRenderer::animated() const
     \brief whether the animation should run, if the SVG is animated
 
     Setting the property to false stops the animation timer.
-    Setting the property to false starts the animation timer,
+    Setting the property to true starts the animation timer,
     provided that the SVG contains animated elements.
 
     If the SVG is not animated, the property will have no effect.
@@ -414,18 +411,19 @@ static bool loadDocument(QSvgRenderer *const q,
                          QSvgRendererPrivate *const d,
                          const TInputType &in)
 {
-    delete d->render;
-    d->render = QSvgTinyDocument::load(in, d->options);
-    if (d->render && !d->render->size().isValid()) {
-        delete d->render;
-        d->render = nullptr;
-    }
+    d->render = QSvgDocument::load(in, d->options);
+    if (d->render && !d->render->size().isValid())
+        d->render.reset();
+
     d->startOrStopTimer();
+
+    if (d->render)
+        d->render->restartAnimation();
 
     //force first update
     QSvgRendererPrivate::callRepaintNeeded(q);
 
-    return d->render;
+    return bool(d->render);
 }
 
 /*!
@@ -471,6 +469,8 @@ void QSvgRenderer::render(QPainter *painter)
 {
     Q_D(QSvgRenderer);
     if (d->render) {
+        if (d->render->animator())
+            d->render->animator()->advanceAnimations();
         d->render->draw(painter);
     }
 }
@@ -492,6 +492,8 @@ void QSvgRenderer::render(QPainter *painter, const QString &elementId,
 {
     Q_D(QSvgRenderer);
     if (d->render) {
+        if (d->render->animator())
+            d->render->animator()->advanceAnimations();
         d->render->draw(painter, elementId, bounds);
     }
 }
@@ -506,6 +508,8 @@ void QSvgRenderer::render(QPainter *painter, const QRectF &bounds)
 {
     Q_D(QSvgRenderer);
     if (d->render) {
+        if (d->render->animator())
+            d->render->animator()->advanceAnimations();
         d->render->draw(painter, bounds);
     }
 }

@@ -1,4 +1,5 @@
 usr/share/qt6/doc/qtsvg/*.html
+usr/share/qt6/doc/qtsvg/examples-manifest.xml
 usr/share/qt6/doc/qtsvg/images
 usr/share/qt6/doc/qtsvg/qtsvg.index
 usr/share/qt6/doc/qtsvg/qtsvg.qhp

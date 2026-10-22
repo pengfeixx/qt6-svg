@@ -1,54 +1,60 @@
-# SymbolsHelper-Confirmed: 6.8.0 amd64
+# SymbolsHelper-Confirmed: 6.12.0 amd64
 libQt6SvgWidgets.so.6 libqt6svgwidgets6 #MINVER#
-| libqt6svgwidgets6 #MINVER#, qt6-svg-private-abi (= 6.8.0)
+| libqt6svgwidgets6 #MINVER#, qt6-svg-private-abi (= 6.12.0)
 * Build-Depends-Packages: qt6-svg-dev, qt6-svg-private-dev
- NonQt@NonQt 6.8.0
- Qt_6@Qt_6 6.8.0
- (symver)Qt_6_PRIVATE_API 0 1
- _ZN10QSvgWidget10paintEventEP11QPaintEvent@Qt_6 6.8.0
- _ZN10QSvgWidget10setOptionsE6QFlagsIN5QtSvg6OptionEE@Qt_6 6.8.0
- _ZN10QSvgWidget11qt_metacallEN11QMetaObject4CallEiPPv@Qt_6 6.8.0
- _ZN10QSvgWidget11qt_metacastEPKc@Qt_6 6.8.0
- _ZN10QSvgWidget16staticMetaObjectE@Qt_6 6.8.0
- _ZN10QSvgWidget4loadERK10QByteArray@Qt_6 6.8.0
- _ZN10QSvgWidget4loadERK7QString@Qt_6 6.8.0
- _ZN10QSvgWidgetC1EP7QWidget@Qt_6 6.8.0
- _ZN10QSvgWidgetC1ERK7QStringP7QWidget@Qt_6 6.8.0
- _ZN10QSvgWidgetC2EP7QWidget@Qt_6 6.8.0
- _ZN10QSvgWidgetC2ERK7QStringP7QWidget@Qt_6 6.8.0
- _ZN10QSvgWidgetD0Ev@Qt_6 6.8.0
- _ZN10QSvgWidgetD1Ev@Qt_6 6.8.0
- _ZN10QSvgWidgetD2Ev@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem11qt_metacallEN11QMetaObject4CallEiPPv@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem11qt_metacastEPKc@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem12setElementIdERK7QString@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem16staticMetaObjectE@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem17setCachingEnabledEb@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem17setSharedRendererEP12QSvgRenderer@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem19setMaximumCacheSizeERK5QSize@Qt_6 6.8.0
- _ZN16QGraphicsSvgItem5paintEP8QPainterPK24QStyleOptionGraphicsItemP7QWidget@Qt_6 6.8.0
- _ZN16QGraphicsSvgItemC1EP13QGraphicsItem@Qt_6 6.8.0
- _ZN16QGraphicsSvgItemC1ERK7QStringP13QGraphicsItem@Qt_6 6.8.0
- _ZN16QGraphicsSvgItemC2EP13QGraphicsItem@Qt_6 6.8.0
- _ZN16QGraphicsSvgItemC2ERK7QStringP13QGraphicsItem@Qt_6 6.8.0
- _ZNK10QSvgWidget10metaObjectEv@Qt_6 6.8.0
- _ZNK10QSvgWidget7optionsEv@Qt_6 6.8.0
- _ZNK10QSvgWidget8rendererEv@Qt_6 6.8.0
- _ZNK10QSvgWidget8sizeHintEv@Qt_6 6.8.0
- _ZNK16QGraphicsSvgItem10metaObjectEv@Qt_6 6.8.0
- _ZNK16QGraphicsSvgItem12boundingRectEv@Qt_6 6.8.0
- _ZNK16QGraphicsSvgItem16isCachingEnabledEv@Qt_6 6.8.0
- _ZNK16QGraphicsSvgItem16maximumCacheSizeEv@Qt_6 6.8.0
- _ZNK16QGraphicsSvgItem4typeEv@Qt_6 6.8.0
- _ZNK16QGraphicsSvgItem8rendererEv@Qt_6 6.8.0
- _ZNK16QGraphicsSvgItem9elementIdEv@Qt_6 6.8.0
- _ZTI10QSvgWidget@Qt_6 6.8.0
- _ZTI16QGraphicsSvgItem@Qt_6 6.8.0
- _ZTS10QSvgWidget@Qt_6 6.8.0
- _ZTS16QGraphicsSvgItem@Qt_6 6.8.0
- _ZTV10QSvgWidget@Qt_6 6.8.0
- _ZTV16QGraphicsSvgItem@Qt_6 6.8.0
- (c++)"non-virtual thunk to QGraphicsSvgItem::boundingRect() const@Qt_6" 6.8.0
- (c++)"non-virtual thunk to QGraphicsSvgItem::paint(QPainter*, QStyleOptionGraphicsItem const*, QWidget*)@Qt_6" 6.8.0
- (c++)"non-virtual thunk to QGraphicsSvgItem::type() const@Qt_6" 6.8.0
- (c++)"non-virtual thunk to QSvgWidget::~QSvgWidget()@Qt_6" 6.8.0
+ NonQt@NonQt 6.12.0
+ Qt_6@Qt_6 6.12.0
+ Qt_6_PRIVATE_API@Qt_6_PRIVATE_API 6.12.0
+ _ZN10QSvgWidget10paintEventEP11QPaintEvent@Qt_6 6.12.0
+ _ZN10QSvgWidget10setOptionsE6QFlagsIN5QtSvg6OptionEE@Qt_6 6.12.0
+ _ZN10QSvgWidget11qt_metacallEN11QMetaObject4CallEiPPv@Qt_6 6.12.0
+ _ZN10QSvgWidget11qt_metacastEPKc@Qt_6 6.12.0
+ _ZN10QSvgWidget16staticMetaObjectE@Qt_6 6.12.0
+ _ZN10QSvgWidget4loadERK10QByteArray@Qt_6 6.12.0
+ _ZN10QSvgWidget4loadERK7QString@Qt_6 6.12.0
+ _ZN10QSvgWidgetC1EP7QWidget@Qt_6 6.12.0
+ _ZN10QSvgWidgetC1ERK7QStringP7QWidget@Qt_6 6.12.0
+ _ZN10QSvgWidgetC2EP7QWidget@Qt_6 6.12.0
+ _ZN10QSvgWidgetC2ERK7QStringP7QWidget@Qt_6 6.12.0
+ _ZN10QSvgWidgetD0Ev@Qt_6 6.12.0
+ _ZN10QSvgWidgetD1Ev@Qt_6 6.12.0
+ _ZN10QSvgWidgetD2Ev@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem11qt_metacallEN11QMetaObject4CallEiPPv@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem11qt_metacastEPKc@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem12setElementIdERK7QString@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem16staticMetaObjectE@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem17setCachingEnabledEb@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem17setSharedRendererEP12QSvgRenderer@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem19setMaximumCacheSizeERK5QSize@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItem5paintEP8QPainterPK24QStyleOptionGraphicsItemP7QWidget@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItemC1EP13QGraphicsItem@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItemC1ERK7QStringP13QGraphicsItem@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItemC2EP13QGraphicsItem@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItemC2ERK7QStringP13QGraphicsItem@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItemD0Ev@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItemD1Ev@Qt_6 6.12.0
+ _ZN16QGraphicsSvgItemD2Ev@Qt_6 6.12.0
+ _ZNK10QSvgWidget10metaObjectEv@Qt_6 6.12.0
+ _ZNK10QSvgWidget7optionsEv@Qt_6 6.12.0
+ _ZNK10QSvgWidget8rendererEv@Qt_6 6.12.0
+ _ZNK10QSvgWidget8sizeHintEv@Qt_6 6.12.0
+ _ZNK16QGraphicsSvgItem10metaObjectEv@Qt_6 6.12.0
+ _ZNK16QGraphicsSvgItem12boundingRectEv@Qt_6 6.12.0
+ _ZNK16QGraphicsSvgItem16isCachingEnabledEv@Qt_6 6.12.0
+ _ZNK16QGraphicsSvgItem16maximumCacheSizeEv@Qt_6 6.12.0
+ _ZNK16QGraphicsSvgItem4typeEv@Qt_6 6.12.0
+ _ZNK16QGraphicsSvgItem8rendererEv@Qt_6 6.12.0
+ _ZNK16QGraphicsSvgItem9elementIdEv@Qt_6 6.12.0
+ _ZTI10QSvgWidget@Qt_6 6.12.0
+ _ZTI16QGraphicsSvgItem@Qt_6 6.12.0
+ _ZTS10QSvgWidget@Qt_6 6.12.0
+ _ZTS16QGraphicsSvgItem@Qt_6 6.12.0
+ _ZTV10QSvgWidget@Qt_6 6.12.0
+ _ZTV16QGraphicsSvgItem@Qt_6 6.12.0
+ _ZThn16_N10QSvgWidgetD0Ev@Qt_6 6.12.0
+ _ZThn16_N10QSvgWidgetD1Ev@Qt_6 6.12.0
+ _ZThn16_N16QGraphicsSvgItem5paintEP8QPainterPK24QStyleOptionGraphicsItemP7QWidget@Qt_6 6.12.0
+ _ZThn16_N16QGraphicsSvgItemD0Ev@Qt_6 6.12.0
+ _ZThn16_N16QGraphicsSvgItemD1Ev@Qt_6 6.12.0
+ _ZThn16_NK16QGraphicsSvgItem12boundingRectEv@Qt_6 6.12.0
+ _ZThn16_NK16QGraphicsSvgItem4typeEv@Qt_6 6.12.0

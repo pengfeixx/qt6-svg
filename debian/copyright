@@ -4,42 +4,45 @@ Upstream-Contact: <preferred name and address to reach the upstream project>
 Source: https://download.qt.io/archive/qt/*/submodules/
 
 Files: *
-Copyright: 2016-2021 The Qt Company Ltd.
-License: LGPL-3 or GPL-2
+Copyright: 2016-2025 The Qt Company Ltd.
+           2016 Intel Corporation
+License: LGPL-3 or GPL-2 or GPL-3
 
-Files: debian/*
-Copyright: 2021-2024 Patrick Franz <deltaone@debian.org>
-           2021 Lu YaNing <dluyaning@gmail.com>
-License: LGPL-3 or GPL-2
+Files: src/svg/qsvghandler.cpp
+Copyright: 2002 USC/Information Sciences Institute
+           2016 The Qt Company Ltd.
+License: LGPL-3 or GPL-2 or GPL-3, and HPND-sell-variant
 
-Files: src/svg/qtsvgglobal.h
-Copyright: 2016 Intel Corporation
-License: LGPL-3 or GPL-2
+Files: tests/auto/*
+       tests/baseline/*
+       tests/benchmarks/*
+       tests/libfuzzer/*
+Copyright: 2016-2025 The Qt Company Ltd.
+License: GPL-3
+
+Files: **/CMakeLists.txt
+       examples/*
+       src/svg/doc/snippets/*
+       tests/baseline/data/svg_12_testsuite/*
+       tests/manual/*
+Copyright: 2016-2025 The Qt Company Ltd.
+           2008 World Wide Web Consortium
+License: BSD-3-clause
+
+Files: tests/manual/cliptests/svgcliptest.cpp
+       tests/manual/rendertestsuite/main.cpp
+Copyright: 2015 Klarälvdalens Datakonsult AB
+           2019 The Qt Company Ltd.
+License: GPL-3
 
 Files: *.qdoc
 Copyright: 2017 The Qt Company Ltd.
 License: GFDL-NIV-1.3
 
-Files: src/svg/doc/snippets/*
-       tests/manual/examples/*
-Copyright: 2016-2017 The Qt Company Ltd.
-License: BSD-3-clause
-
-Files: tests/manual/examples/embedded/fluidlauncher/pictureflow.*
-Copyright: 2007 Ariya Hidayat <ariya@kde.org>
-           2017 The Qt Company Ltd.
-License: BSD-3-clause and Expat
-
-Files: src/svg/qsvghandler.cpp
-Copyright: 2002 USC/Information Sciences Institute
-           2016 The Qt Company Ltd.
-License: LGPL-3 or GPL-2, and HPND-sell-variant
-
-Files: tests/auto/*
-       tests/benchmarks/*
-       tests/libfuzzer/*
-Copyright: 2016-2021 The Qt Company Ltd.
-License: GPL-3 with Qt-1.0 exception
+Files: debian/*
+Copyright: 2021-2026 Patrick Franz <deltaone@debian.org>
+           2021 Lu YaNing <dluyaning@gmail.com>
+License: LGPL-3 or GPL-2 or GPL-3
 
 License: GFDL-NIV-1.3
  Permission is granted to copy, distribute and/or modify this document
@@ -113,7 +116,7 @@ License: GPL-2
  On Debian systems, the complete text of the GNU General Public
  License version 2 can be found in /usr/share/common-licenses/GPL-2.
 
-License: GPL-3 with Qt-1.0 exception
+License: GPL-3
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License version 3 as
  published by the Free Software Foundation.
@@ -125,27 +128,6 @@ License: GPL-3 with Qt-1.0 exception
  .
  On Debian systems, the complete text of the GNU General Public License
  version 3 can be found in /usr/share/common-licenses/GPL-3.
- .
- The Qt Company GPL Exception 1.0
- Exception 1:
- .
- As a special exception you may create a larger work which contains the
- output of this application and distribute that work under terms of your
- choice, so long as the work is not otherwise derived from or based on
- this application and so long as the work does not in itself generate
- output that contains the output from this application in its original
- or modified form.
- .
- Exception 2:
- .
- As a special exception, you have permission to combine this application
- with Plugins licensed under the terms of your choice, to produce an
- executable, and to copy and distribute the resulting executable under
- the terms of your choice. However, the executable must be accompanied
- by a prominent notice offering all users of the executable the entire
- source code to this application, excluding the source code of the
- independent modules, but including any changes you have made to this
- application, under the terms of this license.
 
 License: LGPL-3
  This program is free software: you can redistribute it and/or modify
@@ -159,22 +141,3 @@ License: LGPL-3
  .
  On Debian systems, the complete text of the GNU Lesser General Public
  License version 3 can be found in /usr/share/common-licenses/LGPL-3.
-
-License: Expat
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- .
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.

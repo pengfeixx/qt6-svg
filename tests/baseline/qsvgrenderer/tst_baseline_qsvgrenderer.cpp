@@ -3,7 +3,8 @@
 
 #include <qbaselinetest.h>
 
-#include <qsvgrenderer.h>
+#include <QtSvg/private/qsvgdocument_p.h>
+#include <QtSvg/private/qtsvgglobal_p.h>
 #include <QPainter>
 
 #include <QtCore/QCoreApplication>
@@ -23,6 +24,7 @@ public:
 private Q_SLOTS:
     void initTestCase();
     void cleanup();
+    void cleanupTestCase();
     void testRendering_data();
     void testRendering();
 
@@ -33,20 +35,15 @@ private:
     quint16 checksumFileOrDir(const QString &path);
 
     QString testSuitePath;
-    QScopedPointer<QSvgRenderer> m_renderer;
 };
-
 
 tst_QSvgRenderer::tst_QSvgRenderer()
 {
 
 }
 
-
 void tst_QSvgRenderer::initTestCase()
 {
-    m_renderer.reset(new QSvgRenderer());
-
     QString dataDir = QFINDTESTDATA("../data/.");
     if (dataDir.isEmpty())
         dataDir = QStringLiteral("data");
@@ -60,24 +57,25 @@ void tst_QSvgRenderer::initTestCase()
         QSKIP(msg);
 }
 
-
 void tst_QSvgRenderer::cleanup()
 {
 
 }
 
+void tst_QSvgRenderer::cleanupTestCase()
+{
+    QBaselineTest::finalizeAndDisconnect();
+}
 
 void tst_QSvgRenderer::testRendering_data()
 {
     setupTestSuite();
 }
 
-
 void tst_QSvgRenderer::testRendering()
 {
     runTest();
 }
-
 
 void tst_QSvgRenderer::setupTestSuite(const QByteArray& filter)
 {
@@ -116,23 +114,30 @@ void tst_QSvgRenderer::setupTestSuite(const QByteArray& filter)
         QSKIP("No svg test files found in " + testSuitePath.toLatin1());
 }
 
-
 void tst_QSvgRenderer::runTest(const QStringList& extraArgs)
 {
     Q_UNUSED(extraArgs)
 
     QFETCH(QString, svgFile);
 
-    m_renderer->load(svgFile);
-    QImage actual(m_renderer->viewBox().size(), QImage::Format_RGB32);
+    auto svgDoc = QSvgDocument::load(svgFile, {}, QtSvg::AnimatorType::Controlled);
+    QSize size = svgDoc ? svgDoc->size() : QSize(64, 64);
+    QImage actual(size, QImage::Format_RGB32);
     actual.fill(QColor(255, 255, 255));
-    QPainter actualPainter(&actual);
-    m_renderer->render(&actualPainter);
+
+    if (svgDoc) {
+        if (svgDoc->animated()) {
+            uint midTime = qFloor(svgDoc->animationDuration() * 0.5);
+            uint currentFrame = midTime * 0.001 * 30;
+            svgDoc->setCurrentFrame(currentFrame);
+            svgDoc->animator()->advanceAnimations();
+        }
+        QPainter actualPainter(&actual);
+        svgDoc->draw(&actualPainter);
+    }
 
     QBASELINE_TEST(actual);
 }
-
-
 
 quint16 tst_QSvgRenderer::checksumFileOrDir(const QString &path)
 {
@@ -141,7 +146,11 @@ quint16 tst_QSvgRenderer::checksumFileOrDir(const QString &path)
         return 0;
     if (fi.isFile()) {
         QFile f(path);
-        f.open(QIODevice::ReadOnly | QIODevice::Text);
+        if (!f.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qWarning("Cannot open %ls: %ls",
+                     qUtf16Printable(path), qUtf16Printable(f.errorString()));
+            return 0;
+        }
         QByteArray contents = f.readAll();
         return qChecksum(contents);
     }
